@@ -28,6 +28,13 @@ Route::get('/detail',[DetailController::class, 'index'])->name('detail');
 Route::get('/checkout',[CheckoutController::class, 'index'])->name('checkout');
 Route::get('/checkout/success',[CheckoutController::class, 'success'])->name('checkout-success');
 
-Route::prefix('admin')->namespace('Admin')->group(function () {
+Route::prefix('admin')->namespace('Admin')->middleware(['auth','admin'])->group(function () {
     Route::get('/', [DashboardController::class, 'index']);
 });
+
+// Auth::routes();
+
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Auth::routes(['verify' => true]);
+

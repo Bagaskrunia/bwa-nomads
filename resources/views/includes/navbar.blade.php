@@ -28,14 +28,35 @@
             <a href="#" class="nav-link">Testimonial</a>
         </li>
         </ul>
-        <!-- Mobile Button -->
+       
+        @guest
+         <!-- Mobile Button -->
+
         <form class="form-inline d-md-none d-sm-block">
-        <button class="btn btn-login my-2 my-sm-0">Masuk</button>
+            <button class="btn btn-login my-2 my-sm-0" type="button" onclick="event.preventDefault(); location.href ='{{url('login')}}';">Masuk</button>
         </form>
         <!-- Desktop Button -->
         <form class="form-inline my-2 d-none d-md-block my-lg-0">
-        <button class="btn btn-login btn-navbar-right my-2 my-sm-0 px-4">Masuk</button>
+            <button class="btn btn-login btn-navbar-right my-2 my-sm-0 px-4" type="buttons" onclick="event.preventDefault(); location.href ='{{url('login')}}';">Masuk</button>
         </form>
+        @endguest
+
+         @auth
+         <!-- Mobile Button -->
+
+        <form class="form-inline d-md-none d-sm-block"  action="{{url('logout')}}" method="POST">
+            @csrf
+            <button class="btn btn-login my-2 my-sm-0" type="submit" >Keluar</button>
+        </form>
+
+        <!-- Desktop Button -->
+
+        <form class="form-inline my-2 d-none d-md-block my-lg-0"    action="{{url('logout')}}" method="POST">
+            @csrf
+            <button class="btn btn-login btn-navbar-right my-2 my-sm-0 px-4"  type="submit">Keluar</button>
+        </form>
+        @endauth
+
     </div>
     </nav>
 </div>
