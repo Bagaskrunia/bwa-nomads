@@ -29,7 +29,11 @@ Route::get('/checkout',[CheckoutController::class, 'index'])->name('checkout');
 Route::get('/checkout/success',[CheckoutController::class, 'success'])->name('checkout-success');
 
 Route::prefix('admin')->namespace('Admin')->middleware(['auth','admin'])->group(function () {
-    Route::get('/', [DashboardController::class, 'index']);
+    Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
+
+    
+    Route::resource('travel-package', '\App\Http\Controllers\Admin\TravelPackageController');
+    
 });
 
 // Auth::routes();
