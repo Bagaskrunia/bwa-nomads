@@ -33,6 +33,7 @@ Route::prefix('admin')->namespace('Admin')->middleware(['auth','admin'])->group(
 
     
     Route::resource('travel-package', '\App\Http\Controllers\Admin\TravelPackageController');
+    Route::resource('gallery', '\App\Http\Controllers\Admin\GalleryController');
     
 });
 

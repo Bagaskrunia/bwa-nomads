@@ -14,4 +14,11 @@ class TravelPackage extends Model
     'departure_date', 'duration', 'type', 'price'
 ];
 
-}
+    protected $hidden=[
+
+    ];
+
+    public function galleries(){
+        return $this->hasMany(Gallery::class, 'travel_packages_id', 'id');
+    }
+} 
